@@ -105,6 +105,7 @@ var Controller = function() {
                 results.appendChild(itemElement.getElement());
             }
         } else {
+            resultsHeader.classList.remove("hidden");
             var error = templates.getError("No favorites to display!");
             results.appendChild(error);
         }
