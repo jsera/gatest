@@ -21,3 +21,21 @@ Coding test for General Assembly
 
 misc.js contains miscellaneous utility functions.
 
+# Class definitions
+
+Class definitions are of the form:
+
+var ClassName = function() {
+    // constructor
+}
+
+(function() {
+    // define private members and public methods here.
+})();
+
+JavaScript's closures provide a fun way of simulating the public/private visibility keywords of other languages.
+This gives you a way of insulating parts of your classes from people who might misuse them.
+
+The drawback is that your private variables are more like private static variables. In other words, there's only
+one instance of that variable that all instances of your class share.
+
