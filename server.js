@@ -36,7 +36,7 @@ app.post(
 );
 
 app.listen(
-    3000, 
+    80, 
     function(){
         console.log("Listening on port 3000");
     }
