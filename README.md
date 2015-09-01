@@ -45,3 +45,4 @@ one instance of that variable that all instances of your class share.
 - You can't hide details once you show them. Optimally, you should only be viewing one details panel at a time.
 - The code surrounding generating XMLHttpRequests can be DRYer.
 - favoriting things is fragile, and could use better error handling.
+- Strings are hardcoded in various places around the app. A real app would have some sort of localization dictionary.
