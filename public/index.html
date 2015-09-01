@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>General Assembly Code Test</title>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Movie Search</h1>
+            <a href="#" class="favorites_link">Favorites</a>
+            <form id="search_form">
+                <input type="text" id="title_search" />
+                <input type="submit" id="search_submit" value="Search by title" />
+            </form>
+            <h2 id="results_header" class="hidden">Results</h2>
+            <div id="results">
+            
+            </div>
+        </div>
+        <!-- 
+        All JavaScript at the end of the page so as not to slow down DOM loading.
+        I could use the async attribute, but this way, I can attach to event handlers.
+        
+        I'm including each script separately for clarity, but production websites would
+        concatenate and minify all scripts to speed up page load.
+        
+        Super nifty build scripts would handle dependencies, and figure out which order
+        to include things in.
+         -->
+        <script type="text/javascript" src="js/misc.js"></script>
+        <script type="text/javascript" src="js/search.js"></script>
+        <script type="text/javascript" src="js/favorites.js"></script>
+        <script type="text/javascript" src="js/templates.js"></script>
+        <script type="text/javascript" src="js/resultview.js"></script>
+        <script type="text/javascript" src="js/controller.js"></script>
+    </body>
+</html>
