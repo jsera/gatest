@@ -122,6 +122,10 @@ var Controller = function() {
         return favorites;
     };
     
+    Controller.prototype.getSearch = function() {
+        return search;
+    };
+    
     Controller.prototype.search = function() {
         var scope = this;
         //

@@ -3,6 +3,7 @@ var ResultView = function(controller, resultModel) {
     this.model = resultModel;
     this.element = document.createElement("div");
     this.favorited = false;
+    this.details = null;
     
     this.init();
 };
@@ -12,11 +13,28 @@ var ResultView = function(controller, resultModel) {
         var scope = this;
         var favorites = this.controller.getFavorites();
         var templates = this.controller.getTemplates();
+        var search = this.controller.getSearch();
         this.element = templates.getResult(this.model.Title, this.model.imdbID);
         
         var title = this.element.getElementsByClassName("movie_title")[0];
         title.onclick = addPreventDefault(function() {
-            console.log(this.model);
+            if (scope.details == null) {
+                // We want a spinner
+                var spinner = templates.getSpinner();
+                scope.element.appendChild(spinner);
+                // Kick it off
+                search.onSearchSuccess = function(searchObj) {
+                    scope.element.removeChild(spinner);
+                    scope.details = new DetailsView(scope.controller, searchObj.response);
+                    scope.element.appendChild(scope.details.element);
+                };
+                search.onSearchError = function(searchObj) {
+                    scope.element.removeChild(spinner);
+                    var error = templates.getError("Couldn't load details!");
+                    scope.element.appendChild(error);
+                };
+                search.getDetails(scope.model);
+            }
         }, scope);
         
         var like = this.element.getElementsByClassName("like")[0];
@@ -37,5 +55,5 @@ var ResultView = function(controller, resultModel) {
     
     ResultView.prototype.getElement = function() {
         return this.element;
-    }
+    };
 })();

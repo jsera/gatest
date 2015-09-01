@@ -9,6 +9,7 @@ var Search = function() {
 (function() {
     // private members for Search
     var searchurl = "http://www.omdbapi.com/?s={0}";
+    var detailsurl = "http://www.omdbapi.com/?i={0}";
     
     function loadHandler(request) {
         if (request.status == 200) {
@@ -31,7 +32,17 @@ var Search = function() {
         var url = searchurl.format(term);
         rq.addEventListener("load", function() {loadHandler.apply(scope, [rq])});
         rq.addEventListener("error", function() {errorHandler.apply(scope, [rq])});
-        rq.open(this.method, searchurl.format(term), true);
+        rq.open(this.method, url, true);
+        rq.send();
+    };
+    
+    Search.prototype.getDetails = function(resultModel) {
+        var scope = this;
+        var rq = new XMLHttpRequest();
+        var url = detailsurl.format(resultModel.imdbID);
+        rq.addEventListener("load", function() {loadHandler.apply(scope, [rq])});
+        rq.addEventListener("error", function() {errorHandler.apply(scope, [rq])});
+        rq.open(this.method, url, true);
         rq.send();
     }
 })();

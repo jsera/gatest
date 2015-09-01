@@ -115,3 +115,11 @@ h2 {
 	display: block;
 	float: right;
 }
+
+.details {
+    margin-top: 0.5rem;
+}
+
+.details ul li {
+	padding: 0.5rem;
+}
